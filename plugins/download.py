@@ -1,4 +1,5 @@
 import asyncio
+from pathlib import Path
 from telethon import events
 
 async def init(bot):
@@ -7,7 +8,7 @@ async def init(bot):
         if event.is_reply:
             #print(event.message.reply_to_msg)
             replied = await event.get_reply_message()
-            print("replied: ", replied.stringify())
+            #print("replied: ", replied.stringify())
             if not replied.media:
                 await event.edit("**please reply into any media message not text!**")
             else:
