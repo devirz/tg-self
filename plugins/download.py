@@ -15,7 +15,8 @@ async def init(bot):
                 async def callback(current, total):
                     await event.edit("🚀**Downloading:** `{:.2%}`".format(current / total))
                     await asyncio.sleep(1)
-                await event.edit("**wait...**")
+                #await event.edit("**wait...**")
+                await event.delete()
                 file = await bot.download_media(replied, progress_callback=callback)
-                await event.edit(f"**Downloaded!**\n**⛱File:** `{file}`")
-                Path(file).rename(f"./downloads/{file}")
+                #await event.edit(f"**Downloaded!**\n**⛱File:** `{file}`")
+                Path(file).rename(f"~/storage/dcim/{file}")
