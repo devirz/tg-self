@@ -58,6 +58,10 @@ async def init(bot):
   async def bomber(event):
     phoneNumber = event.text.split(' ')[1]
     await event.edit('Sending SMS Bombs to ' + phoneNumber)
-    result = sms_bomber(phoneNumber)
-    await event.edit(
-      "**ALL:** `{}`\n**Success:** `{}`\n**Errors:** `{}`".format(result['all'], result['success'], result['error']))
+    try:
+      result = sms_bomber(phoneNumber)
+      await event.edit(
+        "**ALL:** `{}`\n**Success:** `{}`\n**Errors:** `{}`".format(result['all'], result['success'], result['error']))
+    except Exception as e:
+      print(e)
+      await event.edit("**Error {}!**\n{}".format(type(e).__name__, e.args))
